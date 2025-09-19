@@ -1,26 +1,20 @@
 import React from 'react'
 
-export default function Header() {
+export default function Header({route, setRoute}){
   return (
-    <div>
-      <header className='bg-slate-200 shadow-md font-sans'>
-        <div className='flex items-center justify-between max-w-6xl mx-auto p-3'>
-            {/* logo */}
-            <div className='font-bold text-sm sm:text-xl flex flex-wrap'>
-                <h1>
-                    <span className='text-slate-500'>Jarurat</span>
-                    <span className='text-slate-700'>Care</span>
-                </h1>
-            </div>
-
-            <ul className='flex gap-4'>
-                <li>Home</li>
-                <li>About</li>
-                <li>Patients</li>
-            </ul>
+    <header className="header">
+      <div className="brand" role="banner">
+        <div className="logo">JC</div>
+        <div>
+          <div style={{fontWeight:800}}>Jarurat Care</div>
+          <div className="small">Patient Records Dashboard</div>
         </div>
-
-      </header>
-    </div>
+      </div>
+      <nav className="nav" aria-label="Main navigation">
+        <a href="#" onClick={(e)=>{e.preventDefault(); setRoute('home')}} style={{color: route==='home' ? '#111827' : undefined}}>Home</a>
+        <a href="#" onClick={(e)=>{e.preventDefault(); setRoute('patients')}} style={{color: route==='patients' ? '#111827' : undefined}}>Patients</a>
+        <a href="#" onClick={(e)=>{e.preventDefault(); setRoute('about')}} style={{color: route==='about' ? '#111827' : undefined}}>About</a>
+      </nav>
+    </header>
   )
 }
